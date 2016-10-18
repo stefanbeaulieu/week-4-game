@@ -140,7 +140,8 @@ Begin Card Stats
     var bobba = {
       name: "Bobba Fett",
       hp: 115,
-      originalAttackPower: 13,
+      attackPower: 8,
+      originalAttackPower: 8,
       counterAttackDamage: 10,
     };
 
@@ -148,8 +149,8 @@ Begin Card Stats
     var han = {
       name: "Han Solo",
       hp: 150,
-      attackPower: 10,
-      originalAttackPower: 10,
+      attackPower: 9,
+      originalAttackPower: 9,
       counterAttackDamage: 11,
       clicked: false,
       defeated: false,
@@ -159,8 +160,8 @@ Begin Card Stats
     var chewbacca = {
       name: "Chewbacca",
       hp: 160,
-      attackPower: 12,
-      originalAttackPower: 12,
+      attackPower: 10,
+      originalAttackPower: 10,
       counterAttackDamage: 10,
       clicked: false,
       defeated: false,
@@ -171,8 +172,8 @@ Begin Card Stats
     var darthVader = {
       name: "Darth Vader",
       hp: 180,
-      attackPower: 14,
-      originalAttackPower: 14,
+      attackPower: 9,
+      originalAttackPower: 9,
       counterAttackDamage: 12,
       clicked: false,
       defeated: false,
@@ -266,7 +267,7 @@ function handleBobbaDefendClicked() {
 
     // ATTACK SECTION
     currentDefender.hp = currentDefender.hp - currentPlayerCard.originalAttackPower;
-    currentPlayerCard.originalAttackPower += currentPlayerCard.originalAttackPower;
+    currentPlayerCard.originalAttackPower += currentPlayerCard.attackPower;
     $('#defenderLine').html("");
     $('#defenderHP').html("<strong>" + currentDefender.name + "'s HP is " + currentDefender.hp + "!</strong><p></p>");
     $('#attackPower').html("<strong>With that hit " + currentPlayerCard.name + "'s attack power grows to " + currentPlayerCard.originalAttackPower + "!</strong><p></p>");
@@ -276,6 +277,30 @@ function handleBobbaDefendClicked() {
     currentPlayerCard.hp -= currentDefender.counterAttackDamage;
     $('#characterHP').html("<strong>" + currentPlayerCard.name + "'s HP is " + currentPlayerCard.hp + ".</strong><p></p>");
     });
+
+    if (currentDefender.hp <= 0) {
+      $('#defender').empty();
+      if (bobba.hp > 0 && bobba.name !== currentPlayerCard.name) {
+        $('#defenderSelect1').html('<img src="assets/images/bobba_fett_card.jpg" />');
+      }
+      if (han.hp > 0 && han.name !== currentPlayerCard.name) {
+        $('#defenderSelect2').html('<img src="assets/images/han_solo_card.jpg" />');
+      }
+      if (chewbacca.hp > 0 && chewbacca.name !== currentPlayerCard.name) {
+        $('#defenderSelect3').html('<img src="assets/images/chewbacca_card.jpg" />');
+      }
+      if (darthVader.hp > 0 && darthVader.name !== currentPlayerCard.name) {
+        $('#defenderSelect4').html('<img src="assets/images/darth_vader_card.jpg" />');
+      }
+      $('#counterAttack').html("");
+      $('#defender').html('');
+      $('#defenderLine').html("<strong>" + currentDefender.name + " is defeated!</strong><p></p>");
+      $('#defenderHP').html('');
+
+      $('#button').html('');
+      $('#subheading').html("");
+      $('#subheading2').html("Select another defender!");
+    }
 
 // closes handleBobbaClicked function
 }
@@ -302,7 +327,7 @@ function handleHanDefendClicked() {
 
     // ATTACK SECTION
     currentDefender.hp = currentDefender.hp - currentPlayerCard.originalAttackPower;
-    currentPlayerCard.originalAttackPower += currentPlayerCard.originalAttackPower;
+    currentPlayerCard.originalAttackPower += currentPlayerCard.attackPower;
     $('#defenderLine').html("");
     $('#defenderHP').html("<strong>" + currentDefender.name + "'s HP is " + currentDefender.hp + "!</strong><p></p>");
     $('#attackPower').html("<strong>With that hit " + currentPlayerCard.name + "'s attack power grows to " + currentPlayerCard.originalAttackPower + "!</strong><p></p>");
@@ -313,6 +338,29 @@ function handleHanDefendClicked() {
     $('#characterHP').html("<strong>" + currentPlayerCard.name + "'s HP is " + currentPlayerCard.hp + ".</strong><p></p>");
     });
 
+    if (currentDefender.hp <= 0) {
+      $('#defender').empty();
+      if (bobba.hp > 0 && bobba.name !== currentPlayerCard.name) {
+        $('#defenderSelect1').html('<img src="assets/images/bobba_fett_card.jpg" />');
+      }
+      if (han.hp > 0 && han.name !== currentPlayerCard.name) {
+        $('#defenderSelect2').html('<img src="assets/images/han_solo_card.jpg" />');
+      }
+      if (chewbacca.hp > 0 && chewbacca.name !== currentPlayerCard.name) {
+        $('#defenderSelect3').html('<img src="assets/images/chewbacca_card.jpg" />');
+      }
+      if (darthVader.hp > 0 && darthVader.name !== currentPlayerCard.name) {
+        $('#defenderSelect4').html('<img src="assets/images/darth_vader_card.jpg" />');
+      }
+      $('#counterAttack').html("");
+      $('#defender').html('');
+      $('#defenderLine').html("<strong>" + currentDefender.name + " is defeated!</strong><p></p>");
+      $('#defenderHP').html('');
+
+      $('#button').html('');
+      $('#subheading').html("");
+      $('#subheading2').html("Select another defender!");
+    }
 
 // closes handleHanDefendClicked function
 }
@@ -335,7 +383,7 @@ function handleChewbaccaDefendClicked() {
 
     // ATTACK SECTION
     currentDefender.hp = currentDefender.hp - currentPlayerCard.originalAttackPower;
-    currentPlayerCard.originalAttackPower += currentPlayerCard.originalAttackPower;
+    currentPlayerCard.originalAttackPower += currentPlayerCard.attackPower;
     $('#defenderLine').html("");
     $('#defenderHP').html("<strong>" + currentDefender.name + "'s HP is " + currentDefender.hp + "!</strong><p></p>");
     $('#attackPower').html("<strong>With that hit " + currentPlayerCard.name + "'s attack power grows to " + currentPlayerCard.originalAttackPower + "!</strong><p></p>");
@@ -345,6 +393,29 @@ function handleChewbaccaDefendClicked() {
     currentPlayerCard.hp -= currentDefender.counterAttackDamage;
     $('#characterHP').html("<strong>" + currentPlayerCard.name + "'s HP is " + currentPlayerCard.hp + ".</strong><p></p>");
     });
+
+    if (currentDefender.hp <= 0) {
+      $('#defender').empty();
+      if (bobba.hp > 0 && bobba.name !== currentPlayerCard.name) {
+        $('#defenderSelect1').html('<img src="assets/images/bobba_fett_card.jpg" />');
+      }
+      if (han.hp > 0 && han.name !== currentPlayerCard.name) {
+        $('#defenderSelect2').html('<img src="assets/images/han_solo_card.jpg" />');
+      }
+      if (chewbacca.hp > 0 && chewbacca.name !== currentPlayerCard.name) {
+        $('#defenderSelect3').html('<img src="assets/images/chewbacca_card.jpg" />');
+      }
+      if (darthVader.hp > 0 && darthVader.name !== currentPlayerCard.name) {
+        $('#defenderSelect4').html('<img src="assets/images/darth_vader_card.jpg" />');
+      }
+      $('#counterAttack').html("");
+      $('#defender').html('');
+      $('#defenderLine').html("<strong>" + currentDefender.name + " is defeated!</strong><p></p>");
+      $('#defenderHP').html('');
+      $('#button').html('');
+      $('#subheading').html("");
+      $('#subheading2').html("Select another defender!");
+    }
 // closes handleChewbaccaDefendClicked function
 }
 
@@ -366,7 +437,7 @@ function handleVaderDefendClicked() {
 
     // ATTACK SECTION
     currentDefender.hp = currentDefender.hp - currentPlayerCard.originalAttackPower;
-    currentPlayerCard.originalAttackPower += currentPlayerCard.originalAttackPower;
+    currentPlayerCard.originalAttackPower += currentPlayerCard.attackPower;
     $('#defenderLine').html("");
     $('#defenderHP').html("<strong>" + currentDefender.name + "'s HP is " + currentDefender.hp + "!</strong><p></p>");
     $('#attackPower').html("<strong>With that hit " + currentPlayerCard.name + "'s attack power grows to " + currentPlayerCard.originalAttackPower + "!</strong><p></p>");
@@ -378,10 +449,29 @@ function handleVaderDefendClicked() {
 
     if (currentDefender.hp <= 0) {
       $('#defender').empty();
-      $('#defenderSelect2').html('<img src="assets/images/han_solo_card.jpg" />');
+      if (bobba.hp > 0 && bobba.name !== currentPlayerCard.name) {
+        $('#defenderSelect1').html('<img src="assets/images/bobba_fett_card.jpg" />');
+      }
+      if (han.hp > 0 && han.name !== currentPlayerCard.name) {
+        $('#defenderSelect2').html('<img src="assets/images/han_solo_card.jpg" />');
+      }
+      if (chewbacca.hp > 0 && chewbacca.name !== currentPlayerCard.name) {
+        $('#defenderSelect3').html('<img src="assets/images/chewbacca_card.jpg" />');
+      }
+      if (darthVader.hp > 0 && darthVader.name !== currentPlayerCard.name) {
+        $('#defenderSelect4').html('<img src="assets/images/darth_vader_card.jpg" />');
+      }
+      $('#counterAttack').html("");
+      $('#defender').html('');
+      $('#defenderLine').html("<strong>" + currentDefender.name + " is defeated!</strong><p></p>");
+      $('#defenderHP').html('');
+
+      $('#button').html('');
+      $('#subheading').html("");
+      $('#subheading2').html("Select another defender!");
     }
 
-    });
+  });
 
 
 // closes handleVaderDefendClicked function
@@ -408,4 +498,7 @@ $(document).ready(function(){
     setupEventHandlers();
     $('#selectedCharacter').html("");
     $('#selectedDefender').html("");
+    if (currentPlayerCard.hp <= 0) {
+      alert('GAME OVER!');
+    }
 });
